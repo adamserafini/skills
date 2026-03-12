@@ -4,30 +4,26 @@ This repository contains custom skills for the Pi coding agent.
 
 ## Installation
 
-To use these skills on a new computer, you need to clone this repository and symlink (or copy) the skill directories into your local Pi skills folder (`~/.agents/skills/`).
+The cleanest way to use these skills on a new computer is to tell Pi to load them directly from this repository using your global settings file. 
+
+This avoids the need for manual symlinks and ensures you don't accidentally load repository documentation as skills.
 
 ### Setup Instructions
 
 1. **Clone the repository:**
    ```bash
    git clone <your-repo-url> ~/Code/skills
-   cd ~/Code/skills
    ```
 
-2. **Create the local skills directory** (if it doesn't already exist):
-   ```bash
-   mkdir -p ~/.agents/skills
+2. **Update your Pi settings:**
+   Open your global Pi settings file (`~/.pi/agent/settings.json`) and add the absolute path to the `skills` subdirectory of this cloned repository.
+
+   ```json
+   {
+     "skills": [
+       "~/Code/skills/skills"
+     ]
+   }
    ```
 
-3. **Symlink the skills:**
-   Run the following command in the root of this repository to symlink all skill folders into the Pi agents directory:
-   ```bash
-   for d in */ ; do
-       ln -shf "$(pwd)/${d%/}" ~/.agents/skills/${d%/}
-   done
-   ```
-
-Alternatively, you can manually symlink individual skills:
-```bash
-ln -s ~/Code/skills/git-commit ~/.agents/skills/git-commit
-```
+That's it! Pi will automatically discover all custom skills inside the `skills/` directory without picking up `README.md` or other repository files by mistake.
