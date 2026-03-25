@@ -1,24 +1,33 @@
 ---
 name: git-commit
-description: Analyzes git changes (staged and unstaged) to craft an appropriate commit message and execute git commit.
+description: Analyzes git changes (staged and unstaged) to craft appropriate commit messages and execute git commits, splitting into separate commits for unrelated changes.
 ---
 
 # Git Commit Skill
 
-This skill helps you analyze current git changes and create a well-crafted git commit.
+This skill helps you analyze current git changes and create well-crafted git commits. It emphasizes atomic commits by splitting unrelated changes into separate commits.
 
 ## Workflow
 
 When the user asks you to commit changes, follow these steps:
 
 1. **Check Status**: Run `git status` to see what files are staged, modified, or untracked.
-2. **Review Changes**: Run `git diff --staged` to see what is currently staged. If nothing is staged but there are modified files, run `git diff` to review unstaged changes.
-3. **Stage Files (if needed)**: If no files are staged, stage the appropriate files (e.g., using `git add <files>` or `git add .`) before proceeding. If you are unsure which files to stage, ask the user.
-4. **Draft Commit Message**: Analyze the changes and craft a concise, descriptive commit message. Preferably use the Conventional Commits format (e.g., `feat: ...`, `fix: ...`, `chore: ...`) unless the repository has a different established convention.
-5. **Commit**: Execute the commit using `git commit -m "<message>"`. If the message is long and requires a body, use multiple `-m` flags: `git commit -m "<title>" -m "<body>"`.
+2. **Review Changes**: Run `git diff` (for unstaged) and `git diff --staged` (for staged) to understand all pending changes.
+3. **Analyze & Group**: Determine if the changes belong to a single logical task or multiple distinct tasks.
+   - If changes are unrelated (e.g., a bug fix in one module and a feature in another), plan to split them into separate commits.
+4. **Execute Commits**:
+   - If files are already staged and you want to commit them as is, proceed to commit.
+   - If you need to split changes or nothing is staged:
+     - Unstage everything first if necessary (`git reset`).
+     - For each logical group of changes:
+       1. Stage the relevant files (`git add <files>`).
+       2. Craft a concise, descriptive commit message (Conventional Commits preferred).
+       3. Execute `git commit -m "<message>"`.
+5. **Verify**: Run `git status` to ensure all intended changes have been committed.
 
 ## Tips
 
-- Do not commit without reviewing the diff first.
-- If the diff is very large, summarize the high-level changes.
-- Ensure the commit message accurately reflects the intent of the changes.
+- **Atomic Commits**: Prefer smaller, focused commits over large "catch-all" commits.
+- **Review Diffs**: Always read the diff before committing.
+- **Message Format**: Use Conventional Commits (e.g., `feat:`, `fix:`, `chore:`) unless the repo uses a different style.
+- **Complex Splits**: If a single file contains unrelated changes (e.g., two different functions modified for different reasons), mention this limitation or try `git add -p` if you are comfortable (though interactive mode might be tricky in this environment). Usually, file-level splitting is sufficient.
