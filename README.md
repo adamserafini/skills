@@ -1,6 +1,6 @@
-# Pi Skills
+# My Agent Skills
 
-This repository contains custom skills for the Pi coding agent.
+This repository contains custom Agent skills I am using with the [Pi](https://pi.dev) coding agent (feel free to use with any other agent!)
 
 ## Installation
 
