@@ -27,3 +27,22 @@ This avoids the need for manual symlinks and ensures you don't accidentally load
    ```
 
 That's it! Pi will automatically discover all custom skills inside the `skills/` directory without picking up `README.md` or other repository files by mistake.
+
+## Validation and Scoring
+
+This repository uses [skill-validator](https://github.com/agent-ecosystem/skill-validator) to ensure all skills are spec-compliant and high quality. The structure, links, and content metrics are checked automatically via a `pre-commit` hook (using `--strict` mode).
+
+You can also use the validator to qualitatively score your skills (e.g., Clarity, Actionability, Novelty) using an LLM.
+
+To manually evaluate a skill and receive actionable feedback:
+
+1. Install the CLI:
+   ```bash
+   brew tap agent-ecosystem/tap
+   brew install skill-validator
+   ```
+
+2. Run the scoring command on a specific skill (using the local Claude CLI, or your preferred API provider):
+   ```bash
+   skill-validator score evaluate --provider claude-cli skills/<skill-name>
+   ```
