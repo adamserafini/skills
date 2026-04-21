@@ -44,5 +44,5 @@ To manually evaluate a skill and receive actionable feedback:
 
 2. Run the scoring command to evaluate all skills (using Pi, or your preferred API provider):
    ```bash
-   skill-validator score evaluate --provider pi
+   skill-validator score evaluate --provider pi skills/
    ```
