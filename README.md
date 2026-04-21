@@ -28,22 +28,6 @@ This avoids the need for manual symlinks and ensures you don't accidentally load
 
 That's it! Pi will automatically discover all custom skills inside the `skills/` directory without picking up `README.md` or other repository files by mistake.
 
-## Validation and Scoring
+## Validation
 
 This repository uses [skill-validator](https://github.com/agent-ecosystem/skill-validator) to ensure all skills are spec-compliant and high quality. The structure, links, and content metrics are checked automatically via a `pre-commit` hook (using `--strict` mode).
-
-You can also use the validator to qualitatively score your skills (e.g., Clarity, Actionability, Novelty) using an LLM.
-
-To manually evaluate a skill and receive actionable feedback:
-
-1. Install the CLI:
-   ```bash
-   brew tap agent-ecosystem/tap
-   brew install skill-validator
-   ```
-
-2. Run the scoring command to evaluate all skills (using your preferred API provider, e.g., Anthropic or OpenAI):
-   ```bash
-   skill-validator score evaluate skills/
-   ```
-   *(Note: This defaults to the Anthropic provider. You will need to have your `ANTHROPIC_API_KEY` set. See `skill-validator score evaluate --help` for other providers like OpenAI).*
