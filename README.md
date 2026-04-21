@@ -42,7 +42,8 @@ To manually evaluate a skill and receive actionable feedback:
    brew install skill-validator
    ```
 
-2. Run the scoring command to evaluate all skills (using Pi, or your preferred API provider):
+2. Run the scoring command to evaluate all skills (using your preferred API provider, e.g., Anthropic or OpenAI):
    ```bash
-   skill-validator score evaluate --provider pi skills/
+   skill-validator score evaluate skills/
    ```
+   *(Note: This defaults to the Anthropic provider. You will need to have your `ANTHROPIC_API_KEY` set. See `skill-validator score evaluate --help` for other providers like OpenAI).*
