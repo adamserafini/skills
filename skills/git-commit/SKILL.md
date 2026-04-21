@@ -29,5 +29,5 @@ When the user asks you to commit changes, follow these steps:
 
 - **Atomic Commits**: Prefer smaller, focused commits over large "catch-all" commits.
 - **Review Diffs**: Always read the diff before committing.
-- **Message Format**: Use Conventional Commits (e.g., `feat:`, `fix:`, `chore:`) unless the repo uses a different style.
+- **Message Format**: Use Conventional Commits (e.g., `feat:`, `fix:`, `chore:`) unless the repo uses a different style. Adhere strictly to the **50/72 rule**: the subject line (first line) must be 50 characters or less, and all lines in the commit body must be wrapped at 72 characters.
 - **Complex Splits**: If a single file contains unrelated changes (e.g., two different functions modified for different reasons), mention this limitation or try `git add -p` if you are comfortable (though interactive mode might be tricky in this environment). Usually, file-level splitting is sufficient.
