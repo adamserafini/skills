@@ -42,7 +42,7 @@ To manually evaluate a skill and receive actionable feedback:
    brew install skill-validator
    ```
 
-2. Run the scoring command on a specific skill (using Pi, or your preferred API provider):
+2. Run the scoring command to evaluate all skills (using Pi, or your preferred API provider):
    ```bash
-   skill-validator score evaluate --provider pi skills/<skill-name>
+   skill-validator score evaluate --provider pi
    ```
