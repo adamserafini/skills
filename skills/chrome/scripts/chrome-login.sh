@@ -9,6 +9,6 @@
 
 echo "Launching Agent Chrome Profile..."
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --user-data-dir=/Users/adam.serafini/.pi/agent/chrome-profile \
+  --user-data-dir="$HOME/.pi/agent/chrome-profile" \
   --no-first-run \
   --no-default-browser-check &

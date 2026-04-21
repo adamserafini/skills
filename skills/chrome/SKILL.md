@@ -22,7 +22,7 @@ When a user asks you to interact with a page that requires authentication and yo
 1. Open your terminal.
 2. Run the provided login script located in the `chrome` skill directory:
    ```bash
-   /Users/adam.serafini/Code/skills/skills/chrome/scripts/chrome-login.sh
+   /path/to/skills/chrome/scripts/chrome-login.sh
    ```
    *(Note: This script launches a non-headless Chrome window using the agent's dedicated profile.)*
 3. A new Chrome window will open. Navigate to the required websites (e.g., Jira, internal wiki, GitHub) and log in manually, including passing any required MFA.
